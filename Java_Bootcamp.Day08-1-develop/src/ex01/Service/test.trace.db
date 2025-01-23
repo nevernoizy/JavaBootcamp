@@ -1,0 +1,3 @@
+2024-10-16 15:05:48.806826+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-224]

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="PreProcessorToLower"
+        class="PreProcessorToLower"/>
+    <bean id="PreProcessorToUpper"
+          class="PreProcessorToUpperImpl"/>
+
+    <bean id="RendererStandardToUpper" class="RendererStandardImpl">
+        <constructor-arg ref="PreProcessorToUpper"/>
+    </bean>
+    <bean id="RendererStandardToLower" class="RendererStandardImpl">
+        <constructor-arg ref="PreProcessorToLower"/>
+    </bean>
+
+    <bean id="RendererErrToUpper" class="RendererErrImpl">
+        <constructor-arg ref="PreProcessorToUpper"/>
+    </bean>
+    <bean id="RendererErrToLower" class="RendererErrImpl">
+        <constructor-arg ref="PreProcessorToLower"/>
+    </bean>
+
+
+    <bean id="PrinterWithPrefixStandardToUpper" class="PrinterWithPrefixImpl">
+        <constructor-arg ref="RendererStandardToUpper"/>
+    </bean>
+    <bean id="PrinterWithPrefixStandardToLower" class="PrinterWithPrefixImpl">
+        <constructor-arg ref="RendererStandardToLower"/>
+    </bean>
+    <bean id="PrinterWithPrefixErrToUpper" class="PrinterWithPrefixImpl">
+        <constructor-arg ref="RendererErrToUpper"/>
+    </bean>
+    <bean id="PrinterWithPrefixErrToLower" class="PrinterWithPrefixImpl">
+        <constructor-arg ref="RendererErrToLower"/>
+    </bean>
+
+    <bean id="PrinterWithDateStandardToUpper" class="PrinterWithDateTimeImpl">
+        <constructor-arg ref="RendererStandardToUpper"/>
+    </bean>
+    <bean id="PrinterWithDateStandardToLower" class="PrinterWithDateTimeImpl">
+        <constructor-arg ref="RendererStandardToLower"/>
+    </bean>
+    <bean id="PrinterWithDateErrToUpper" class="PrinterWithDateTimeImpl">
+        <constructor-arg ref="RendererErrToUpper"/>
+    </bean>
+    <bean id="PrinterWithDateErrToLower" class="PrinterWithDateTimeImpl">
+        <constructor-arg ref="RendererErrToLower"/>
+    </bean>
+
+
+
+</beans>
